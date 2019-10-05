@@ -12,7 +12,7 @@ var express = require('express'),
 
 mongoose.Promise = global.Promise;
 if(process.env.NODE_ENV == "production"){
-    mongoose.connect('mongodb+srv://wangjingru:3030790wjl@cluster0-rxamc.mongodb.net/admin?retryWrites=true&w=majority');
+    mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-rxamc.mongodb.net/admin?retryWrites=true&w=majority', { useMongoClient: true });
 }else{
     mongoose.connect('mongodb://localhost/Tododb', { useMongoClient: true });
 }
