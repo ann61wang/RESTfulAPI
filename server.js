@@ -20,7 +20,7 @@ if(process.env.NODE_ENV == "production"){
               console.log(err)
             });
 }else{
-    mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-shard-00-00-rxamc.mongodb.net/todoList', { useMongoClient: true });
+    mongoose.connect('mongodb://localhost/todoList', { useMongoClient: true });
 }
 
 
