@@ -11,13 +11,18 @@ var express = require('express'),
   MongoStore = require("connect-mongo")(session);
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-shard-00-00-rxamc.mongodb.net/todoList?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', { useMongoClient: true })
-        .then(()=>{
-          console.log('MongoDB is connected')
-        }).catch(err=>{
-          console.log('MongoDB connection unsuccessful, retry after 5 seconds.')
-          console.log(err)
-        });
+
+if(process.env.NODE_ENV == "production"){
+    mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-shard-00-00-rxamc.mongodb.net/todoList?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', { useMongoClient: true })
+            .then(()=>{
+              console.log('MongoDB is connected');
+            }).catch(err=>{
+              console.log('MongoDB connection unsuccessful, retry after 5 seconds.');
+            });
+}else{
+    mongoose.connect('mongodb://localhost/todoList');
+}
+
 
 
 
