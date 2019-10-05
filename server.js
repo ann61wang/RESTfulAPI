@@ -12,7 +12,7 @@ var express = require('express'),
 
 mongoose.Promise = global.Promise;
 if(process.env.NODE_ENV == "production"){
-    mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-shard-00-02-rxamc.mongodb.net/todoList?authSource=admin, { useMongoClient: true })
+    mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-shard-00-02-rxamc.mongodb.net/todoList?authSource=admin', { useMongoClient: true })
             .then(()=>{
               console.log('MongoDB is connected')
             }).catch(err=>{
