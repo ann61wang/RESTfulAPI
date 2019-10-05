@@ -11,17 +11,14 @@ var express = require('express'),
   MongoStore = require("connect-mongo")(session);
 
 mongoose.Promise = global.Promise;
-if(process.env.NODE_ENV == "production"){
-    mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-shard-00-02-rxamc.mongodb.net/todoList?authSource=admin', { useMongoClient: true })
-            .then(()=>{
-              console.log('MongoDB is connected')
-            }).catch(err=>{
-              console.log('MongoDB connection unsuccessful, retry after 5 seconds.')
-              console.log(err)
-            });
-}else{
-    mongoose.connect('mongodb://localhost/todoList', { useMongoClient: true });
-}
+mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-shard-00-02-rxamc.mongodb.net/todoList?authSource=admin', { useMongoClient: true })
+        .then(()=>{
+          console.log('MongoDB is connected')
+        }).catch(err=>{
+          console.log('MongoDB connection unsuccessful, retry after 5 seconds.')
+          console.log(err)
+        });
+
 
 
 
