@@ -11,7 +11,13 @@ var express = require('express'),
   MongoStore = require("connect-mongo")(session);
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Tododb', { useMongoClient: true });
+if(process.env.NODE_ENV == "production"){
+    mongoose.connect('mongodb+srv://wangjingru:3030790wjl@cluster0-rxamc.mongodb.net/admin?retryWrites=true&w=majority');
+}else{
+    mongoose.connect('mongodb://localhost/Tododb', { useMongoClient: true });
+}
+
+
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
