@@ -12,15 +12,15 @@ var express = require('express'),
 
 mongoose.Promise = global.Promise;
 if(process.env.NODE_ENV == "production"){
-    mongoose.connect('mongodb+srv://wangjingru:3030790wjl@cluster0-rxamc.mongodb.net/admin?retryWrites=true&w=majority', { useMongoClient: true });
-    .then(()=>{
-      console.log('MongoDB is connected')
-    }).catch(err=>{
-      console.log('MongoDB connection unsuccessful, retry after 5 seconds.')
-      console.log(err)
-    })
+    mongoose.connect('mongodb+srv://wangjingru:3030790wjl@cluster0-rxamc.mongodb.net/admin?retryWrites=true&w=majority', { useMongoClient: true })
+            .then(()=>{
+              console.log('MongoDB is connected')
+            }).catch(err=>{
+              console.log('MongoDB connection unsuccessful, retry after 5 seconds.')
+              console.log(err)
+            });
 }else{
-    mongoose.connect('mongodb://localhost/Tododb', { useMongoClient: true });
+    mongoose.connect('mongodb+srv://wangjingru:3030790wjl@cluster0-rxamc.mongodb.net/admin?retryWrites=true&w=majority', { useMongoClient: true });
 }
 
 
