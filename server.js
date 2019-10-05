@@ -30,7 +30,7 @@ app.use(session({
     secret: 'billy',
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({url:'mongodb://localhost/my_web_session'}),
+    store: new MongoStore({url:'mongodb://wangjingru:3030790wjl@cluster0-shard-00-02-rxamc.mongodb.net/my_web_session?authSource=admin'}),
     cookie: {
         maxAge: 18000000
     },
