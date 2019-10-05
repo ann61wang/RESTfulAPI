@@ -12,7 +12,7 @@ var express = require('express'),
 
 mongoose.Promise = global.Promise;
 if(process.env.NODE_ENV == "production"){
-    mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-shard-00-00-rxamc.mongodb.net/todoList', { useMongoClient: true })
+    mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-rxamc.mongodb.net/admin?retryWrites=true&w=majority', { useMongoClient: true })
             .then(()=>{
               console.log('MongoDB is connected')
             }).catch(err=>{
@@ -20,7 +20,7 @@ if(process.env.NODE_ENV == "production"){
               console.log(err)
             });
 }else{
-    mongoose.connect('mongodb://localhost/todoList', { useMongoClient: true });
+    mongoose.connect('mongodb://127.0.0.1/todoList', { useMongoClient: true });
 }
 
 
