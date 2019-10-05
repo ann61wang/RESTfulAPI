@@ -11,7 +11,7 @@ var express = require('express'),
   MongoStore = require("connect-mongo")(session);
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-rxamc.mongodb.net/todoList?authSource=admin', { useMongoClient: true })
+mongoose.connect('mongodb://wangjingru:3030790wjl@cluster0-shard-00-00-rxamc.mongodb.net/todoList?authSource=admin', { useMongoClient: true })
         .then(()=>{
           console.log('MongoDB is connected')
         }).catch(err=>{
