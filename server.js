@@ -19,27 +19,36 @@ if(process.env.NODE_ENV == "production"){
             }).catch(err=>{
               console.log('MongoDB connection unsuccessful, retry after 5 seconds.');
             });
+
+    app.use(session({
+        secret: 'billy',
+        resave: false,
+        saveUninitialized: false,
+        store: new MongoStore({url:'mongodb://wangjingru:3030790wjl@cluster0-shard-00-00-rxamc.mongodb.net/todoList?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin'}),
+        cookie: {
+            maxAge: 18000000
+        },
+    }));
 }else{
-    mongoose.connect('mongodb://localhost/todoList');
+    console.log('connected local MongoDB');
+    mongoose.connect('mongodb://localhost/todoList', { useMongoClient: true });
+    app.use(session({
+        secret: 'billy',
+        resave: false,
+        saveUninitialized: false,
+        store: new MongoStore({url:'mongodb://localhost/todoList'}),
+        cookie: {
+            maxAge: 18000000
+        },
+    }));
 }
-
-
-
 
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(session({
-    secret: 'billy',
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({url:'mongodb://wangjingru:3030790wjl@cluster0-shard-00-00-rxamc.mongodb.net/todoList?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin'}),
-    cookie: {
-        maxAge: 18000000
-    },
-}));
+
 
 var routes = require('./api/routes/index');
 routes(app);

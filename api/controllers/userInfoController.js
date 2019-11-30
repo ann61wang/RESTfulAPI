@@ -27,7 +27,7 @@ var mongoose = require('mongoose'),
           if (err)
             res.send(err);
 
-          if(req.session) {
+          if(req.session && userInfo !== null) {
             if (!req.session.time) {
               req.session.time = Date();
             }
